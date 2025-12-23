@@ -57,7 +57,7 @@ class StudentsListActivity : AppCompatActivity() {
                     parent,
                     false)
 
-                    val checkbox: CheckBox = view.findViewById(R.id.student_row_checkbox)
+                    val checkbox: CheckBox = view.findViewById(R.id.checkbox)
                     checkbox.setOnClickListener { view ->
                         (view?.tag as Int)?.let { tag ->
                             students[tag].isPresent = checkbox.isChecked
@@ -66,10 +66,10 @@ class StudentsListActivity : AppCompatActivity() {
                     }
                 }
 
-                val nameTextView: TextView = view.findViewById(R.id.student_row_name_text_view)
-                val idTextView: TextView = view.findViewById(R.id.student_row_id_text_view)
-                val imageView: ImageView = view.findViewById(R.id.student_row_avatar_image_view)
-                val checkbox: CheckBox = view.findViewById(R.id.student_row_checkbox)
+                val nameTextView: TextView = view.findViewById(R.id.name_text_view)
+                val idTextView: TextView = view.findViewById(R.id.id_text_view)
+                val imageView: ImageView = view.findViewById(R.id.image_view)
+                val checkbox: CheckBox = view.findViewById(R.id.checkbox)
 
                 nameTextView.text = students[position].name
                 idTextView.text = students[position].id
