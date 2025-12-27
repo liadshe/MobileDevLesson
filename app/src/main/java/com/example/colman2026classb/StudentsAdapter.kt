@@ -1,6 +1,7 @@
 package com.example.colman2026classb
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,11 +10,16 @@ import com.example.colman2026classb.databinding.StudentRowLayoutBinding
 import com.example.colman2026classb.models.Student
 import kotlin.text.get
 
+interface onItemClickListener{
+    fun onItemClick(position: Int)
+    fun onStudentItemClick(student: Student)
+}
 class StudentsAdapter(
     private var students: List<Student>,
     ) : RecyclerView.Adapter<StudentRowViewHolder>() {
 
-    override fun getItemCount(): Int = students.size
+        var listener: onItemClickListener? = null
+        override fun getItemCount(): Int = students.size
 
     // return the class of the row
     override fun onCreateViewHolder(
@@ -22,7 +28,10 @@ class StudentsAdapter(
     ): StudentRowViewHolder {
         val inflator = LayoutInflater.from(parent.context)
         val binding = StudentRowLayoutBinding.inflate(inflator, parent, false)
-        return StudentRowViewHolder(binding)
+        return StudentRowViewHolder(
+            binding,
+            listener = listener
+        )
 
     }
 

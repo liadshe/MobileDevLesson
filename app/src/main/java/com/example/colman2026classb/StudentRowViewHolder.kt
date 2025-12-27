@@ -1,5 +1,6 @@
 package com.example.colman2026classb
 
+import android.widget.AdapterView
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,7 +10,8 @@ import com.example.colman2026classb.models.Student
 import com.squareup.picasso.Picasso
 
 class StudentRowViewHolder(
-    private val binding: StudentRowLayoutBinding
+    private val binding: StudentRowLayoutBinding,
+    private val listener: onItemClickListener?
 ): RecyclerView.ViewHolder(binding.root) {
 
     private val student: Student? = null
@@ -19,6 +21,14 @@ class StudentRowViewHolder(
                 student?.isPresent = binding.checkbox.isChecked
             }
         }
+
+        itemView.setOnClickListener {
+            listener?.onItemClick(absoluteAdapterPosition)
+            student?.let { student ->
+                listener?.onStudentItemClick(student)
+            }
+        }
+
     }
 
 
