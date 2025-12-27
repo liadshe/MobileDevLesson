@@ -15,6 +15,7 @@ class StudentRowViewHolder(
 ): RecyclerView.ViewHolder(binding.root) {
 
     private val student: Student? = null
+
     init {
         binding.checkbox.setOnClickListener { view ->
             (view?.tag as? Int)?.let { tag ->
