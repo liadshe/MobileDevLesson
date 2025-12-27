@@ -7,18 +7,19 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import com.example.colman2026classb.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null
 
-    private var fragmentOne: BlueFragment? = null
-    private var fragmentTwo: BlueFragment? = null
-    private var fragmentThree: BlueFragment? = null
-    private var fragmentFour: BlueFragment? = null
+    private var fragmentOne: Fragment? = null
+    private var fragmentTwo: Fragment? = null
+    private var fragmentThree: Fragment? = null
+    private var fragmentFour: Fragment? = null
 
-    private var displayedFragment: BlueFragment? = null
+    private var displayedFragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Initialize your fragments
-        fragmentOne = BlueFragment.newInstance("One")
+        fragmentOne = StudentsListFragment.newInstance()
         fragmentTwo = BlueFragment.newInstance("Two")
         fragmentThree = BlueFragment.newInstance("Three")
         fragmentFour = BlueFragment.newInstance("Four")
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Moved outside of onCreate so it is recognized as a class function
-    private fun addPinkFragment(fragment: BlueFragment?) {
+    private fun addPinkFragment(fragment: Fragment?) {
         fragment?.let {
             supportFragmentManager.beginTransaction().apply {
                 displayedFragment?.let { existingFragment ->
